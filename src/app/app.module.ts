@@ -22,6 +22,7 @@ import { DialogComponent } from './shared/components/dialog/dialog.component';
 import { Interceptor } from '@shared/services/http/interceptor';
 import { LoaderComponent } from './shared/components/loader/loader.component';
 import { DropdownsComponent } from './shared/components/dropdowns/dropdowns.component';
+import { CaseStudiesComponent } from './modules/components/case-studies/case-studies.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { DropdownsComponent } from './shared/components/dropdowns/dropdowns.comp
     TableComponent,
     DialogComponent,
     LoaderComponent,
-    DropdownsComponent
+    DropdownsComponent,
+    CaseStudiesComponent
   ],
   imports: [
     BrowserModule,

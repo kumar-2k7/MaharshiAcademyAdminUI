@@ -7,6 +7,7 @@ import { LoginComponent } from '@modules/components/login/login.component';
 import { HomeComponent } from '@modules/components/home/home.component';
 import { SubjectsComponent } from '@modules/components/subjects/subjects.component';
 import { ChaptersComponent } from '@modules/components/chapters/chapters.component';
+import { CaseStudiesComponent } from '@modules/components/case-studies/case-studies.component';
 
 const appRoutes: Routes = [
   {
@@ -15,7 +16,8 @@ const appRoutes: Routes = [
   {
     path: 'home', component: HomeComponent, children: [
       { path: 'dashboard', component: DashboardComponent },
-      { path: 'add', component: AddQuestionsComponent },
+      { path: 'questions', component: AddQuestionsComponent },
+      { path: 'case-studies', component: CaseStudiesComponent },
       { path: 'subjects', component: SubjectsComponent },
       { path: 'chapters', component: ChaptersComponent },
     ]
