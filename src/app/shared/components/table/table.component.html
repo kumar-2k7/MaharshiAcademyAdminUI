@@ -1,0 +1,27 @@
+
+<div class="text-right"><button mat-button (click)="action('add', null)" *ngIf="actions.includes('add')">
+    <mat-icon>add</mat-icon>
+  </button></div>
+<div class="table-container">
+  <table width="100%" mat-table [dataSource]="rows" class="mat-elevation-z8">
+
+    <!-- Position Column -->
+    <ng-container *ngFor="let col of columns" [matColumnDef]="col.property">
+      <th mat-header-cell *matHeaderCellDef> {{col.name}} </th>
+      <td mat-cell *matCellDef="let element" (click)="cellClicked(col, element)">
+        {{col.property.includes('Date') ? (element[col.property] | amDateFormat:'LL') : element[col.property]}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Actions" *ngIf="actions.length">
+
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-icon class="cursor-pointer grey-color hover-expand" *ngIf="actions.includes('update')"
+          (click)="action('update', element)">edit</mat-icon>
+        <mat-icon class="cursor-pointer red-color hover-expand" *ngIf="actions.includes('delete')"
+          (click)="action('delete', element)">delete</mat-icon>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

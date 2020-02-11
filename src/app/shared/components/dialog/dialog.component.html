@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>{{data.action.action.toUpperCase()}}</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput [(ngModel)]="inputValue" placeholder="Name of the Subject">
+  </mat-form-field>
+  <mat-form-field *ngIf="maxListOrder.length">
+    <mat-label>List Order</mat-label>
+    <mat-select [(ngModel)]="listOrderValue">
+      <mat-option *ngFor="let val of maxListOrder" [value]="val">
+        {{val}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="close()">Cancel</button>
+  <button mat-button cdkFocusInitial (click)="close()">{{data.action.action.toUpperCase()}}</button>
+</div>

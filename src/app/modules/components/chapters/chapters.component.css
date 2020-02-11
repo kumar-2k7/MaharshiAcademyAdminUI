@@ -1,0 +1,8 @@
+.input-form-field {
+    width: 30%;
+}
+
+.table {
+    height: calc(100% - 200px);
+    overflow: auto;
+}

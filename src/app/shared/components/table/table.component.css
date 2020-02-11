@@ -1,0 +1,4 @@
+.table-container {
+    width: calc(100% - 72px);
+margin: 0 36px;
+}

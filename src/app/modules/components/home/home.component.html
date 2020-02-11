@@ -1,0 +1,25 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches" >
+    <mat-toolbar color="primary" class="example-toolbar">
+      <button mat-icon-button (click)="snav.toggle()">
+          <mat-icon>menu</mat-icon></button>
+      <h1 class="example-app-name">Maharshi Academy</h1>
+    </mat-toolbar>
+  
+    <mat-sidenav-container class="example-sidenav-container"
+                           [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+      <mat-sidenav #snav [mode]="'side'"
+                   [fixedInViewport]="mobileQuery.matches" fixedTopGap="56" [opened]="true">
+        <mat-nav-list>
+          <a mat-list-item routerLink="/home/dashboard"><mat-icon class="navigation-icon">dashboard</mat-icon>Dashboard</a>
+          <a mat-list-item routerLink="/home/subjects"><mat-icon class="navigation-icon">add_box</mat-icon>Subjects</a>
+          <a mat-list-item routerLink="/home/chapters"><mat-icon class="navigation-icon">pageview</mat-icon>Chapters</a>
+          <a mat-list-item routerLink="/home/add"><mat-icon class="navigation-icon">pageview</mat-icon>Questions</a>
+          <a mat-list-item routerLink="/home/add"><mat-icon class="navigation-icon">pageview</mat-icon>Level</a>
+        </mat-nav-list>
+      </mat-sidenav>
+  
+      <mat-sidenav-content>
+        <router-outlet></router-outlet>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>

@@ -1,0 +1,26 @@
+<div>
+  <div class="autocomplete text-center sticky" *ngIf="allSubjects">
+      <form class="example-form">
+          <mat-form-field class="example-full-width input-form-field">
+              <input type="text" placeholder="Pick a Subject" aria-label="Subject" matInput
+                  [formControl]="subjectControl" [matAutocomplete]="auto">
+              <mat-autocomplete #auto="matAutocomplete" [displayWith]="subjectDisplayFn"
+                  (optionSelected)="subjectSelected($event)">
+                  <mat-option *ngFor="let option of filteredSubjectOptions | async" [value]="option">
+                      {{option.SubjectName}}
+                  </mat-option>
+              </mat-autocomplete>
+          </mat-form-field>
+          <mat-form-field class="example-full-width input-form-field" *ngIf="displayChapters">
+              <input type="text" placeholder="Pick a Chapter" aria-label="Chapter" matInput
+                  [formControl]="chapterControl" [matAutocomplete]="auto">
+              <mat-autocomplete #auto="matAutocomplete" [displayWith]="chapterDisplayFn"
+                  (optionSelected)="chapterSelected($event)">
+                  <mat-option *ngFor="let option of filteredChapterOptions | async" [value]="option">
+                      {{option.ChapterName}}
+                  </mat-option>
+              </mat-autocomplete>
+          </mat-form-field>
+      </form>
+  </div>
+</div>

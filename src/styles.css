@@ -1,0 +1,40 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Roboto', sans-serif; }
+
+
+.text-align-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.blue-color {
+    color: #3f51b5;
+}
+
+.red-color {
+    color:#f44336
+}
+
+.grey-color {
+    color: #9e9e9e;
+}
+.hover-expand:hover {
+    font-size: 38px;
+}
+.mat-form-field {
+    width: 100%;
+}
+
+.sticky {
+    position: sticky;
+    top: 0px;
+    background-color: #FAFAFA;
+}
