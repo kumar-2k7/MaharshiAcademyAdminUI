@@ -1,1 +1,4 @@
 <app-dropdowns [dropdowns]="dropdowns" (selection)="selection($event)"></app-dropdowns>
+<div *ngIf="rows">
+    <app-table [rows]="rows" [columns]="columns" [actions]="actions" (actionPerformed)="action($event)"></app-table>
+</div>

@@ -13,7 +13,11 @@ export const environment = {
     GetChaptersBySubjectID: 'ManageMasterData/GetChaptersBySubjectID',
     UpdateChapter: 'ManageMasterData/UpdateChapter',
     InsertChapter: 'ManageMasterData/InsertChapter',
-    DeleteChapter: 'ManageMasterData/DeleteChapter'
+    DeleteChapter: 'ManageMasterData/DeleteChapter',
+    GetQuestionsByChapterID: 'ManageMasterData/GetQuestionsByChapterID',
+    DeleteQuestion: 'ManageMasterData/DeleteQuestion',
+    GetCaseStudiesByChapterID: 'ManageMasterData/GetCaseStudiesByChapterID',
+    DeleteCaseStudy: 'ManageMasterData/DeleteCaseStudy'
   }
 };
 

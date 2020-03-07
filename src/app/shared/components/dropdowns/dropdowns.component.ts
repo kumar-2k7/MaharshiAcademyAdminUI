@@ -71,12 +71,12 @@ export class DropdownsComponent implements OnInit {
   }
   subjectSelected(event) {
     console.log(event);
-    this.selection.emit({ 'SelectionType': 'chapter', SelectionValue: event});
+    this.selection.emit({ 'SelectionType': 'subject', SelectionValue: event});
     this.displayChapters = undefined;
     this.chapters.getChaptersBySubjectID(this.subjectControl.value.SubjectID).subscribe((response: Chapters) => {
       console.log(response);
       if (response.Status === 'SUCCESS') {
-        this.selection.emit({ 'SelectionType': 'chapter', SelectionValue: this.subjectControl.value, SelectionResponse: response.ChapterList });
+        this.selection.emit({ 'SelectionType': 'subject', SelectionValue: this.subjectControl.value, SelectionResponse: response.ChapterList });
         if (this.dropdowns.includes('chapter')) {
           this.chapterControl.setValue('');
           this.displayChapters = response.ChapterList;
@@ -86,7 +86,7 @@ export class DropdownsComponent implements OnInit {
   }
 
   chapterSelected(event) {
-    console.log(event);
+    this.selection.emit({ 'SelectionType': 'chapter', SelectionValue: this.chapterControl.value});
   }
 
 }
