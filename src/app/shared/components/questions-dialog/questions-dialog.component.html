@@ -1,0 +1,21 @@
+<ckeditor [editor]="Editor" [(ngModel)]="editorData"></ckeditor>
+<button mat-button (click)="addNewFormGroup()">+ Option</button>
+<div *ngFor="let group of answerFormArray.controls; index as i">
+  <div [formGroup]="group" class="answer-form-group">
+    <div *ngIf="group.controls">
+      <div>
+      <mat-form-field>
+        <mat-label>Option {{i + 1}}</mat-label>
+        <input [formControl]="group.controls.AnswerDescription" matInput />
+      </mat-form-field>
+    </div>
+      <mat-checkbox [formControl]="group.controls.IsCorrectAnswer">Correct</mat-checkbox>
+      <button mat-button (click)="removeFormGroup(i)">X Remove</button>
+    </div>
+  </div>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="close('C')">Cancel</button>
+  <button mat-button cdkFocusInitial (click)="close()">{{data.params.action.toUpperCase()}}</button>
+</div>

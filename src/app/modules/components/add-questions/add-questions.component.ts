@@ -4,6 +4,7 @@ import { Columns } from '@shared/models/table.interface';
 import { IQuestion, IQuestions } from '@shared/models/questions.interface';
 import { LevelsService } from '@modules/services/levels.service';
 import { IDifficultyLevelList, ILevels } from '@shared/models/levels.interface';
+import { DialogService } from '@shared/services/dialog.service';
 
 @Component({
   selector: 'app-add-questions',
@@ -46,7 +47,8 @@ export class AddQuestionsComponent implements OnInit {
       property: 'ModifiedBy'
     }
   ];
-  constructor(private questionsService: QuestionsService, private levelsService: LevelsService) { }
+  constructor(private questionsService: QuestionsService, private levelsService: LevelsService,
+    private dialog: DialogService) { }
 
   ngOnInit() {
 
@@ -88,6 +90,10 @@ export class AddQuestionsComponent implements OnInit {
           this.selection({ SelectionType: 'chapter', SelectionValue: { ChapterID: event.row.ChapterID } });
         }
       })
+    } else {
+      this.dialog.questionDialog('question', event).subscribe(dialogCloseResponse => {
+        console.log(dialogCloseResponse)
+      });
     }
   }
 

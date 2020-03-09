@@ -23,6 +23,8 @@ import { Interceptor } from '@shared/services/http/interceptor';
 import { LoaderComponent } from './shared/components/loader/loader.component';
 import { DropdownsComponent } from './shared/components/dropdowns/dropdowns.component';
 import { CaseStudiesComponent } from './modules/components/case-studies/case-studies.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { QuestionsDialogComponent } from './shared/components/questions-dialog/questions-dialog.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import { CaseStudiesComponent } from './modules/components/case-studies/case-stu
     DialogComponent,
     LoaderComponent,
     DropdownsComponent,
-    CaseStudiesComponent
+    CaseStudiesComponent,
+    QuestionsDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -49,10 +52,12 @@ import { CaseStudiesComponent } from './modules/components/case-studies/case-stu
     ReactiveFormsModule,
     HttpClientModule,
     MomentModule,
-    FormsModule
+    FormsModule,
+    CKEditorModule
   ],
   entryComponents: [
-    DialogComponent
+    DialogComponent,
+    QuestionsDialogComponent
   ],
   providers: [
     HttpService,
