@@ -5,6 +5,8 @@ import { IQuestion, IQuestions } from '@shared/models/questions.interface';
 import { LevelsService } from '@modules/services/levels.service';
 import { IDifficultyLevelList, ILevels } from '@shared/models/levels.interface';
 import { DialogService } from '@shared/services/dialog.service';
+import { ChaptersList } from '@shared/models/chapters.interface';
+import { SubjectsList } from '@shared/models/subjects.interface';
 
 @Component({
   selector: 'app-add-questions',
@@ -16,6 +18,8 @@ export class AddQuestionsComponent implements OnInit {
   rows: IQuestion[];
   levels: IDifficultyLevelList[] = [];
   actions = ['add', 'update', 'delete'];
+  selectedChapter: ChaptersList;
+  selectedSubject: SubjectsList;
 
   columns: Columns[] = [
     {
@@ -66,6 +70,7 @@ export class AddQuestionsComponent implements OnInit {
   selection(event) {
     console.log(event);
     if (event.SelectionType === 'chapter') {
+      this.selectedChapter = event.SelectionValue;
       this.questionsService.getQuestionsByChapterID(event.SelectionValue.ChapterID).subscribe((res: IQuestions) => {
         console.log(res.QuestionList);
         res.QuestionList.map((data: IQuestion, i) => {
@@ -79,6 +84,8 @@ export class AddQuestionsComponent implements OnInit {
           }
         })
       })
+    } else {
+      this.selectedSubject = event.SelectionValue;
     }
   }
 
@@ -93,6 +100,22 @@ export class AddQuestionsComponent implements OnInit {
     } else {
       this.dialog.questionDialog('question', event).subscribe(dialogCloseResponse => {
         console.log(dialogCloseResponse)
+        if (dialogCloseResponse.QuestionDescription) {
+          const req = {
+            Question: {
+              ChapterID: this.selectedChapter.ChapterID,
+              SubjectID: this.selectedSubject.SubjectID,
+              ...dialogCloseResponse
+            }
+          }
+          console.log('Request ::', req);
+
+          this.questionsService.insertQuestion(req).subscribe(res => {
+            if (res.Status === 'SUCCESS') {
+              this.selection({SelectionType: 'chapter', SelectionValue: this.selectedChapter})
+            }
+          })
+        }
       });
     }
   }

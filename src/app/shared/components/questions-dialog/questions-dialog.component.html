@@ -1,14 +1,24 @@
 <ckeditor [editor]="Editor" [(ngModel)]="editorData"></ckeditor>
-<button mat-button (click)="addNewFormGroup()">+ Option</button>
+<div class="display-inline-block width-100">
+  <button  class="float-left" mat-button (click)="addNewFormGroup()">+ Option</button>
+  <div class="difficulty-level-wrapper float-right">
+    <mat-form-field>
+      <mat-label>Difficulty Level</mat-label>
+      <mat-select [formControl]="difficultyLevel">
+        <mat-option *ngFor="let level of levels" [value]="level"> {{level.DifficultyLevelDescription}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>
 <div *ngFor="let group of answerFormArray.controls; index as i">
   <div [formGroup]="group" class="answer-form-group">
     <div *ngIf="group.controls">
       <div>
-      <mat-form-field>
-        <mat-label>Option {{i + 1}}</mat-label>
-        <input [formControl]="group.controls.AnswerDescription" matInput />
-      </mat-form-field>
-    </div>
+        <mat-form-field>
+          <mat-label>Option {{i + 1}}</mat-label>
+          <input [formControl]="group.controls.AnswerDescription" matInput />
+        </mat-form-field>
+      </div>
       <mat-checkbox [formControl]="group.controls.IsCorrectAnswer">Correct</mat-checkbox>
       <button mat-button (click)="removeFormGroup(i)">X Remove</button>
     </div>
@@ -17,5 +27,5 @@
 
 <div mat-dialog-actions>
   <button mat-button (click)="close('C')">Cancel</button>
-  <button mat-button cdkFocusInitial (click)="close()">{{data.params.action.toUpperCase()}}</button>
+  <button mat-button cdkFocusInitial (click)="close()" [disabled]="difficultyLevel.invalid || !editorData.length || answerFormArray.invalid">{{data.params.action.toUpperCase()}}</button>
 </div>

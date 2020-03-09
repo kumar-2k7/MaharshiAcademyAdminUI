@@ -38,3 +38,11 @@ body { margin: 0; font-family: 'Roboto', sans-serif; }
     top: 0px;
     background-color: #FAFAFA;
 }
+
+.display-inline-block {
+    display: inline-block;
+}
+
+.width-100 {
+    width: 100%;
+}

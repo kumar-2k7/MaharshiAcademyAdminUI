@@ -23,4 +23,8 @@ export class QuestionsService {
 
     return this.http.postRequest(environment.apiUrl.DeleteQuestion, req);
   }
+
+  insertQuestion (req) {
+    return this.http.postRequest(environment.apiUrl.InsertQuestion, req);
+  }
 }

@@ -2,6 +2,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { LevelsService } from '@modules/services/levels.service';
+import { IDifficultyLevelList } from '@shared/models/levels.interface';
 
 @Component({
   selector: 'app-questions-dialog',
@@ -13,11 +15,14 @@ export class QuestionsDialogComponent implements OnInit {
   public Editor = ClassicEditor;
   editorData: any = '';
   answerFormArray: FormArray;
+  levels: IDifficultyLevelList[] = [];
+  difficultyLevel: FormControl = new FormControl('', Validators.required);
 
   constructor(public dialogRef: MatDialogRef<QuestionsDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
+    @Inject(MAT_DIALOG_DATA) public data: any, private levelsService: LevelsService) { }
 
   ngOnInit() {
+    this.levels = this.levelsService.getSaveDifficultyLevels();
     console.log(this.data);
     if (this.data.params.action === 'update') {
       this.editorData = this.data.params.row.QuestionDescription;
@@ -40,7 +45,12 @@ export class QuestionsDialogComponent implements OnInit {
     if (action === 'C') {
       this.dialogRef.close();
     } else {
-      this.dialogRef.close(this.editorData);
+      const req = {
+        QuestionDescription: this.editorData,
+        DifficultyLevelID: this.difficultyLevel.value.DifficultyLevelID,
+        Answer: this.answerFormArray.value
+      }
+      this.dialogRef.close(req);
     }
 
   }

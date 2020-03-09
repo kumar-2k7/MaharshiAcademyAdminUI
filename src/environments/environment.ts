@@ -15,6 +15,7 @@ export const environment = {
     InsertChapter: 'ManageMasterData/InsertChapter',
     DeleteChapter: 'ManageMasterData/DeleteChapter',
     GetQuestionsByChapterID: 'ManageMasterData/GetQuestionsByChapterID',
+    InsertQuestion: 'ManageMasterData/InsertQuestion',
     DeleteQuestion: 'ManageMasterData/DeleteQuestion',
     GetCaseStudiesByChapterID: 'ManageMasterData/GetCaseStudiesByChapterID',
     DeleteCaseStudy: 'ManageMasterData/DeleteCaseStudy',
