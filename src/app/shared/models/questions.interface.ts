@@ -19,4 +19,5 @@ export interface IQuestion {
     ModifiedBy: string;
     PurgeFlag: string;
     Answers: string;
+    DifficultyLevelDescription?: string;
 }

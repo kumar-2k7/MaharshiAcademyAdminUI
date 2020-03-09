@@ -17,4 +17,5 @@ export interface ICaseStudy {
     ModifiedBy: string;
     PurgeFlag: string;
     Questions: string;
+    DifficultyLevelDescription?: string;
 }

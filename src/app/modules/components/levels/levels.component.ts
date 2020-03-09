@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./levels.component.css']
 })
 export class LevelsComponent implements OnInit {
-
   constructor() { }
 
   ngOnInit() {

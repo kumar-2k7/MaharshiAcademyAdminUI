@@ -8,6 +8,7 @@ import { HomeComponent } from '@modules/components/home/home.component';
 import { SubjectsComponent } from '@modules/components/subjects/subjects.component';
 import { ChaptersComponent } from '@modules/components/chapters/chapters.component';
 import { CaseStudiesComponent } from '@modules/components/case-studies/case-studies.component';
+import { LevelsComponent } from '@modules/components/levels/levels.component';
 
 const appRoutes: Routes = [
   {
@@ -20,6 +21,7 @@ const appRoutes: Routes = [
       { path: 'case-studies', component: CaseStudiesComponent },
       { path: 'subjects', component: SubjectsComponent },
       { path: 'chapters', component: ChaptersComponent },
+      { path: 'levels', component: LevelsComponent },
     ]
   },
   { path: '', component: LoginComponent }
