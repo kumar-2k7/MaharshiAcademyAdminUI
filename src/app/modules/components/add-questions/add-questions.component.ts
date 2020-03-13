@@ -109,12 +109,13 @@ export class AddQuestionsComponent implements OnInit {
             }
           }
           console.log('Request ::', req);
-
-          this.questionsService.insertQuestion(req).subscribe(res => {
-            if (res.Status === 'SUCCESS') {
-              this.selection({SelectionType: 'chapter', SelectionValue: this.selectedChapter})
-            }
-          })
+          if (event.action === 'add') {
+            this.questionsService.insertQuestion(req).subscribe(res => {
+              if (res['Status'] === 'SUCCESS') {
+                this.selection({ SelectionType: 'chapter', SelectionValue: this.selectedChapter })
+              }
+            })
+          }
         }
       });
     }

@@ -27,4 +27,12 @@ export class QuestionsService {
   insertQuestion (req) {
     return this.http.postRequest(environment.apiUrl.InsertQuestion, req);
   }
+
+  getAnswersByQuestionID(id) {
+   const req = {
+    QuestionID: id
+   };
+
+   return this.http.postRequest(environment.apiUrl.GetAnswerByQuestionID, req);
+  }
 }

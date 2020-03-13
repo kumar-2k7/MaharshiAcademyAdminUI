@@ -19,7 +19,8 @@ export const environment = {
     DeleteQuestion: 'ManageMasterData/DeleteQuestion',
     GetCaseStudiesByChapterID: 'ManageMasterData/GetCaseStudiesByChapterID',
     DeleteCaseStudy: 'ManageMasterData/DeleteCaseStudy',
-    GetDifficultyLevels: 'ManageMasterData/GetDifficultyLevelsAll'
+    GetDifficultyLevels: 'ManageMasterData/GetDifficultyLevelsAll',
+    GetAnswerByQuestionID: 'ManageMasterData/GetAnsersByQuestionID'
   }
 };
 
