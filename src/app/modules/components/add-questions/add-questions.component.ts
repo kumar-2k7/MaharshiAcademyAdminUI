@@ -115,6 +115,13 @@ export class AddQuestionsComponent implements OnInit {
                 this.selection({ SelectionType: 'chapter', SelectionValue: this.selectedChapter })
               }
             })
+          } else {
+            req.Question['QuestionID'] = event.row.QuestionID;
+            this.questionsService.updateQuestion(req).subscribe(res => {
+              if (res['Status'] === 'SUCCESS') {
+                this.selection({ SelectionType: 'chapter', SelectionValue: this.selectedChapter });
+              }
+            })
           }
         }
       });

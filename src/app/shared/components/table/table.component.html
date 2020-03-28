@@ -2,7 +2,7 @@
 <div class="text-right"><button mat-button (click)="action('add', null)" *ngIf="actions.includes('add')">
     <mat-icon>add</mat-icon>
   </button></div>
-<div class="table-container">
+<div class="table-container" *ngIf="rows">
   <table width="100%" mat-table [dataSource]="rows" class="mat-elevation-z8">
 
     <!-- Position Column -->

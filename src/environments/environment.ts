@@ -16,8 +16,10 @@ export const environment = {
     DeleteChapter: 'ManageMasterData/DeleteChapter',
     GetQuestionsByChapterID: 'ManageMasterData/GetQuestionsByChapterID',
     InsertQuestion: 'ManageMasterData/InsertQuestion',
+    UpdateQuestion: 'ManageMasterData/UpdateQuestion',
     DeleteQuestion: 'ManageMasterData/DeleteQuestion',
     GetCaseStudiesByChapterID: 'ManageMasterData/GetCaseStudiesByChapterID',
+    InsertCaseStudy: 'ManageMasterData/InsertCaseStudy',
     DeleteCaseStudy: 'ManageMasterData/DeleteCaseStudy',
     GetDifficultyLevels: 'ManageMasterData/GetDifficultyLevelsAll',
     GetAnswerByQuestionID: 'ManageMasterData/GetAnsersByQuestionID'

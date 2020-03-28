@@ -1,0 +1,22 @@
+<ckeditor [editor]="Editor" [(ngModel)]="editorData"></ckeditor>
+<div class="display-inline-block width-100">
+  <button class="float-left" mat-button (click)="addNewOption()">+ Option</button>
+  <div class="difficulty-level-wrapper float-right">
+    <mat-form-field>
+      <mat-label>Difficulty Level</mat-label>
+      <mat-select [formControl]="difficultyLevel">
+        <mat-option *ngFor="let level of levels" [value]="level.DifficultyLevelID"> {{level.DifficultyLevelDescription}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>
+<div *ngIf="displayTable">
+  <app-table [rows]="rows" [columns]="columns" [actions]="actions" (actionPerformed)="action($event)"></app-table>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="close('C')">Cancel</button>
+  <button mat-button cdkFocusInitial (click)="close()"
+    [disabled]="difficultyLevel.invalid || !editorData.length ">{{data.params.action.toUpperCase()}}</button>
+</div>

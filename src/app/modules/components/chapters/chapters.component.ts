@@ -18,6 +18,7 @@ export class ChaptersComponent implements OnInit {
   subjectControl = new FormControl();
   allSubjects: SubjectsList[];
   displayChapters: ChaptersList[];
+  isSubjectSelected = false;
   filteredOptions: Observable<SubjectsList[]>;
   actions = ['add', 'update', 'delete'];
   columns: Columns[] = [
@@ -79,6 +80,8 @@ export class ChaptersComponent implements OnInit {
 
   subjectSelected(event) {
     console.log(event);
+    this.isSubjectSelected = true;
+    this.displayChapters = [];
     this.chapters.getChaptersBySubjectID(this.subjectControl.value.SubjectID).subscribe((response: Chapters) => {
       console.log(response);
       if (response.Status === 'SUCCESS') {

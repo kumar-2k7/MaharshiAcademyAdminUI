@@ -5,6 +5,7 @@ import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { LevelsService } from '@modules/services/levels.service';
 import { IDifficultyLevelList } from '@shared/models/levels.interface';
 import { QuestionsService } from '@modules/services/questions.service';
+import { DialogService } from '@shared/services/dialog.service';
 
 @Component({
   selector: 'app-questions-dialog',
@@ -18,6 +19,7 @@ export class QuestionsDialogComponent implements OnInit {
   answerFormArray: FormArray;
   levels: IDifficultyLevelList[] = [];
   difficultyLevel: FormControl = new FormControl('', Validators.required);
+  caseStudy = false;
 
   constructor(public dialogRef: MatDialogRef<QuestionsDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any, private levelsService: LevelsService, private questionService: QuestionsService) { }
@@ -25,33 +27,40 @@ export class QuestionsDialogComponent implements OnInit {
   ngOnInit() {
     this.levels = this.levelsService.getSaveDifficultyLevels();
     this.answerFormArray = new FormArray([]);
-    console.log(this.data);
+
     if (this.data.params.action === 'update') {
-      this.editorData = this.data.params.row.QuestionDescription;
-      this.difficultyLevel.setValue(this.data.params.row.DifficultyLevelID);
-      this.questionService.getAnswersByQuestionID(this.data.params.row.QuestionID).subscribe(res => {
-        console.log(res);
-        if (res['Status'] === 'SUCCESS') {
-          res['AnswerList'].map(data => {
-            this.addOption(data.AnswerDescription, data.IsCorrectAnswer);
-          })
-        }
-      })
+        this.updateQuestion();
     }
   }
 
-  addNewFormGroup() {
+  addNewOption() {
+
+      this.answerFormArray.push(new FormGroup({
+        AnswerDescription: new FormControl('', Validators.required),
+        IsCorrectAnswer: new FormControl(false, Validators.required),
+        AnswerID: new FormControl(0)
+      }));
+  }
+
+  addOption(AnswerDescription: string, IsCorrectAnswer: boolean, AnswerID = 0) {
     this.answerFormArray.push(new FormGroup({
-      AnswerDescription: new FormControl('', Validators.required),
-      IsCorrectAnswer: new FormControl(false, Validators.required)
+      AnswerDescription: new FormControl(AnswerDescription, Validators.required),
+      IsCorrectAnswer: new FormControl(IsCorrectAnswer, Validators.required),
+      AnswerID: new FormControl(AnswerID)
     }));
   }
 
-  addOption(AnswerDescription: string, IsCorrectAnswer: boolean) {
-    this.answerFormArray.push(new FormGroup({
-      AnswerDescription: new FormControl(AnswerDescription, Validators.required),
-      IsCorrectAnswer: new FormControl(IsCorrectAnswer, Validators.required)
-    }));
+  updateQuestion() {
+    this.editorData = this.data.params.row.QuestionDescription;
+    this.difficultyLevel.setValue(this.data.params.row.DifficultyLevelID);
+    this.questionService.getAnswersByQuestionID(this.data.params.row.QuestionID).subscribe(res => {
+      console.log(res);
+      if (res['Status'] === 'SUCCESS') {
+        res['AnswerList'].map(data => {
+          this.addOption(data.AnswerDescription, data.IsCorrectAnswer, data.AnswerID);
+        })
+      }
+    })
   }
 
   removeFormGroup(i) {
@@ -69,7 +78,6 @@ export class QuestionsDialogComponent implements OnInit {
       }
       this.dialogRef.close(req);
     }
-
   }
 
 }

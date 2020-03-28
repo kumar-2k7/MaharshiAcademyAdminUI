@@ -24,4 +24,8 @@ export class CaseStudiesService {
 
     return this.http.postRequest(environment.apiUrl.DeleteCaseStudy, req);
   }
+
+  insertCaseStudy(req) {
+    return this.http.postRequest(environment.apiUrl.InsertCaseStudy, req);
+  }
 }

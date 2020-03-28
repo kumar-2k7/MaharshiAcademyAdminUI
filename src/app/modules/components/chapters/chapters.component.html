@@ -14,7 +14,7 @@
     </form>
   </div>
   <div class="table">
-    <div *ngIf="displayChapters">
+    <div *ngIf="isSubjectSelected">
       <app-table [rows]="displayChapters" [columns]="columns" [actions]="actions" (actionPerformed)="action($event)"></app-table>
     </div>
   </div>

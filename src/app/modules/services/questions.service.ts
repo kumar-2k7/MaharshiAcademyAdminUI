@@ -28,6 +28,10 @@ export class QuestionsService {
     return this.http.postRequest(environment.apiUrl.InsertQuestion, req);
   }
 
+  updateQuestion(req) {
+    return this.http.postRequest(environment.apiUrl.UpdateQuestion, req);
+  }
+
   getAnswersByQuestionID(id) {
    const req = {
     QuestionID: id
