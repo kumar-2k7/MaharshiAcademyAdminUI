@@ -23,7 +23,8 @@ export const environment = {
     UpdateCaseStudy: 'ManageMasterData/UpdateCaseStudy',
     DeleteCaseStudy: 'ManageMasterData/DeleteCaseStudy',
     GetDifficultyLevels: 'ManageMasterData/GetDifficultyLevelsAll',
-    GetAnswerByQuestionID: 'ManageMasterData/GetAnsersByQuestionID'
+    GetAnswerByQuestionID: 'ManageMasterData/GetAnsersByQuestionID',
+    GetMainCourseAll: 'ManageMasterData/GetMainCourseAll'
   }
 };
 
