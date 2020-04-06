@@ -28,4 +28,8 @@ export class CaseStudiesService {
   insertCaseStudy(req) {
     return this.http.postRequest(environment.apiUrl.InsertCaseStudy, req);
   }
+  
+  updateCaseStudy(req) {
+    return this.http.postRequest(environment.apiUrl.UpdateCaseStudy, req);
+  }
 }

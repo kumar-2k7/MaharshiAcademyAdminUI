@@ -100,7 +100,7 @@ export class CaseStudiesComponent implements OnInit {
         console.log(dialogResponse);
         if (dialogResponse.CaseStudyDescription) {
           const req = {
-            Question: {
+            CaseStudy: {
               ChapterID: this.selectedChapter.ChapterID,
               SubjectID: this.selectedSubject.SubjectID,
               ...dialogResponse
@@ -113,8 +113,16 @@ export class CaseStudiesComponent implements OnInit {
                 this.selection({ SelectionType: 'chapter', SelectionValue: this.selectedChapter })
               }
             })
+          } else {
+            req.CaseStudy['CaseStudyID'] = event.row.CaseStudyID;
+            this.caseStudyService.updateCaseStudy(req).subscribe(res => {
+              if (res['Status'] === 'SUCCESS') {
+                this.selection({ SelectionType: 'chapter', SelectionValue: this.selectedChapter })
+              }
+            })
           }
-        });
+        }
+      });
     }
   }
 

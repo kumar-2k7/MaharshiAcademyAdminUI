@@ -29,17 +29,17 @@ export class QuestionsDialogComponent implements OnInit {
     this.answerFormArray = new FormArray([]);
 
     if (this.data.params.action === 'update') {
-        this.updateQuestion();
+      this.updateQuestion();
     }
   }
 
   addNewOption() {
 
-      this.answerFormArray.push(new FormGroup({
-        AnswerDescription: new FormControl('', Validators.required),
-        IsCorrectAnswer: new FormControl(false, Validators.required),
-        AnswerID: new FormControl(0)
-      }));
+    this.answerFormArray.push(new FormGroup({
+      AnswerDescription: new FormControl('', Validators.required),
+      IsCorrectAnswer: new FormControl(false, Validators.required),
+      AnswerID: new FormControl(0)
+    }));
   }
 
   addOption(AnswerDescription: string, IsCorrectAnswer: boolean, AnswerID = 0) {
@@ -53,14 +53,21 @@ export class QuestionsDialogComponent implements OnInit {
   updateQuestion() {
     this.editorData = this.data.params.row.QuestionDescription;
     this.difficultyLevel.setValue(this.data.params.row.DifficultyLevelID);
-    this.questionService.getAnswersByQuestionID(this.data.params.row.QuestionID).subscribe(res => {
-      console.log(res);
-      if (res['Status'] === 'SUCCESS') {
-        res['AnswerList'].map(data => {
-          this.addOption(data.AnswerDescription, data.IsCorrectAnswer, data.AnswerID);
-        })
-      }
-    })
+    if (this.data.from === 'question') {
+      this.questionService.getAnswersByQuestionID(this.data.params.row.QuestionID).subscribe(res => {
+        console.log(res);
+        if (res['Status'] === 'SUCCESS') {
+          res['AnswerList'].map(data => {
+            this.addOption(data.AnswerDescription, data.IsCorrectAnswer, data.AnswerID);
+          })
+        }
+      })
+    } else {
+      console.log(this.data.row);
+      this.data.params.row['Answer'].map(data => {
+        this.addOption(data.AnswerDescription, data.IsCorrectAnswer, data.AnswerID);
+      })
+    }
   }
 
   removeFormGroup(i) {
@@ -76,8 +83,23 @@ export class QuestionsDialogComponent implements OnInit {
         DifficultyLevelID: this.difficultyLevel.value,
         Answer: this.answerFormArray.value
       }
-      this.dialogRef.close(req);
+      if (this.data.from === 'question') {
+        this.dialogRef.close(req);
+      } else {
+        if (this.data.params.action === 'update') {
+          const caseStudyReq = {
+            ...req,
+            QuestionID: this.data.params.row.QuestionID,
+            SubjectID: this.data.params.row.SubjectID,
+            ChapterID: this.data.params.row.ChapterID,
+            index: this.data.params.row.index
+          }
+          this.dialogRef.close(caseStudyReq);
+        } else {
+          this.dialogRef.close(req);
+        }
+      }
     }
-  }
 
+  }
 }
