@@ -9,6 +9,7 @@ import { SubjectsComponent } from '@modules/components/subjects/subjects.compone
 import { ChaptersComponent } from '@modules/components/chapters/chapters.component';
 import { CaseStudiesComponent } from '@modules/components/case-studies/case-studies.component';
 import { MainCourseComponent } from '@modules/components/main-course/main-course.component';
+import { MainCourseAddUpdateComponent } from '@modules/components/main-course-add-update/main-course-add-update.component';
 
 const appRoutes: Routes = [
   {
@@ -22,6 +23,7 @@ const appRoutes: Routes = [
       { path: 'subjects', component: SubjectsComponent },
       { path: 'chapters', component: ChaptersComponent },
       { path: 'main-course', component: MainCourseComponent },
+      { path: 'main-course-update', component: MainCourseAddUpdateComponent },
     ]
   },
   { path: '', component: LoginComponent }

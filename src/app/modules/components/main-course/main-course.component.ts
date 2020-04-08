@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MainCourseService } from '@modules/services/main-course.service';
 import { RootObject, MainCourseList } from '@shared/models/main-course.interface';
 import { Columns } from '@shared/models/table.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-course',
@@ -43,7 +44,7 @@ export class MainCourseComponent implements OnInit {
     }
   ];
 
-  constructor(private mainCourseService: MainCourseService) { }
+  constructor(private mainCourseService: MainCourseService, private router: Router) { }
 
   ngOnInit() {
     this.mainCourseService.getMainCourseAll().subscribe((apiResponse: RootObject) => {
@@ -52,6 +53,13 @@ export class MainCourseComponent implements OnInit {
         this.rows = apiResponse.MainCourseList;
       }
     })
+  }
+
+  action(event) {
+    console.log(event);
+    if (event.action === 'add') {
+      this.router.navigate(['/home/main-course-update']);
+    }
   }
 
 }

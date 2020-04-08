@@ -1,0 +1,14 @@
+.table-container {
+    padding: 15px;
+}
+.table-container table {
+    width: 100%;
+}
+
+.table-container table thead {
+    font-size: 24px;
+}
+
+.table-container table tbody td button {
+    width: 150px;
+}

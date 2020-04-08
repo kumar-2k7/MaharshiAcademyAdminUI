@@ -27,6 +27,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { QuestionsDialogComponent } from './shared/components/questions-dialog/questions-dialog.component';
 import { CaseStudyDialogComponent } from './shared/components/case-study-dialog/case-study-dialog.component';
 import { MainCourseComponent } from './modules/components/main-course/main-course.component';
+import { MainCourseAddUpdateComponent } from './modules/components/main-course-add-update/main-course-add-update.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { MainCourseComponent } from './modules/components/main-course/main-cours
     CaseStudiesComponent,
     QuestionsDialogComponent,
     CaseStudyDialogComponent,
-    MainCourseComponent
+    MainCourseComponent,
+    MainCourseAddUpdateComponent
   ],
   imports: [
     BrowserModule,

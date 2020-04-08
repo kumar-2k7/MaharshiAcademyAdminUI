@@ -12,4 +12,8 @@ export class MainCourseService {
   getMainCourseAll() {
     return this.http.postRequest(environment.apiUrl.GetMainCourseAll, {});
   }
+
+  addMainCourse(req) {
+    return this.http.postRequest(environment.apiUrl.InsertMainCourse, req);
+  }
 }

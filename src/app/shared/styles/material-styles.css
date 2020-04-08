@@ -1,0 +1,7 @@
+.mat-button-primary {
+    background-color: #3F51B5;
+    color: white;
+}
+.mat-button-primary:disabled {
+background-color: rgba(0,0,0,.26);
+}
