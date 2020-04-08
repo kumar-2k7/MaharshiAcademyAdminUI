@@ -51,6 +51,7 @@ export class MainCourseComponent implements OnInit {
       if (apiResponse.Status === 'SUCCESS') {
         console.log(apiResponse);
         this.rows = apiResponse.MainCourseList;
+
       }
     })
   }
@@ -58,6 +59,10 @@ export class MainCourseComponent implements OnInit {
   action(event) {
     console.log(event);
     if (event.action === 'add') {
+      this.mainCourseService.storedCourse = undefined;
+      this.router.navigate(['/home/main-course-update']);
+    } else if (event.action === 'update') {
+      this.mainCourseService.storedCourse = event.row;
       this.router.navigate(['/home/main-course-update']);
     }
   }

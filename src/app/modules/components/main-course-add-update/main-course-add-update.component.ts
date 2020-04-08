@@ -20,7 +20,13 @@ export class MainCourseAddUpdateComponent implements OnInit {
       CorrectAnswerWeightage: new FormControl('', Validators.required),
       WrongAnswerWeightage: new FormControl('', Validators.required),
       ExamTimeDuration: new FormControl('', Validators.required),
-    })
+    });
+
+    if (this.mainCourseService.getStoredCourse()) {
+      for (const prop of Object.keys(this.CourseGroup.controls)) {
+        this.CourseGroup.controls[prop].setValue(this.mainCourseService.getStoredCourse()[prop]);
+      }
+    }
   }
 
   submit(type) {
