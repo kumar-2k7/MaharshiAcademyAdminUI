@@ -25,7 +25,8 @@ export const environment = {
     GetDifficultyLevels: 'ManageMasterData/GetDifficultyLevelsAll',
     GetAnswerByQuestionID: 'ManageMasterData/GetAnsersByQuestionID',
     GetMainCourseAll: 'ManageMasterData/GetMainCourseAll',
-    InsertMainCourse: 'ManageMasterData/InsertMainCourse'
+    InsertMainCourse: 'ManageMasterData/InsertMainCourse',
+    GetExamByCourseID: 'ManageMasterData/GetExamByCourseID'
   }
 };
 

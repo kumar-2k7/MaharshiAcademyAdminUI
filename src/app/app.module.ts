@@ -28,6 +28,8 @@ import { QuestionsDialogComponent } from './shared/components/questions-dialog/q
 import { CaseStudyDialogComponent } from './shared/components/case-study-dialog/case-study-dialog.component';
 import { MainCourseComponent } from './modules/components/main-course/main-course.component';
 import { MainCourseAddUpdateComponent } from './modules/components/main-course-add-update/main-course-add-update.component';
+import { ExamsComponent } from './modules/components/exams/exams.component';
+import { ExamDialogComponent } from './shared/components/exam-dialog/exam-dialog.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import { MainCourseAddUpdateComponent } from './modules/components/main-course-a
     QuestionsDialogComponent,
     CaseStudyDialogComponent,
     MainCourseComponent,
-    MainCourseAddUpdateComponent
+    MainCourseAddUpdateComponent,
+    ExamsComponent,
+    ExamDialogComponent
   ],
   imports: [
     BrowserModule,

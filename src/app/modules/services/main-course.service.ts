@@ -8,6 +8,7 @@ import { MainCourseList } from '@shared/models/main-course.interface';
 })
 export class MainCourseService {
   storedCourse: MainCourseList;
+  storeAllMainCourse: MainCourseList[];
   constructor(private http: HttpService) { }
 
   getMainCourseAll() {

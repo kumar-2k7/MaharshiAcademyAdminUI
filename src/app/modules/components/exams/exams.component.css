@@ -1,0 +1,15 @@
+.table-container table {
+        width: 100%;
+}
+
+.table-container table td,th {
+    border: 1px solid black;
+    padding-left: 10px;
+    font-size: 18px;
+}
+
+.table-container table th {
+    background-color: #3F51B5;
+    color: white;
+    font-weight: normal;
+}

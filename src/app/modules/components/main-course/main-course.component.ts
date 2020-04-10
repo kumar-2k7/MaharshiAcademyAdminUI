@@ -51,7 +51,7 @@ export class MainCourseComponent implements OnInit {
       if (apiResponse.Status === 'SUCCESS') {
         console.log(apiResponse);
         this.rows = apiResponse.MainCourseList;
-
+        this.mainCourseService.storeAllMainCourse = apiResponse.MainCourseList;
       }
     })
   }

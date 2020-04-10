@@ -43,7 +43,11 @@ export class SubjectsComponent implements OnInit {
   constructor(private subjects: SubjectsService, private dialog: DialogService) { }
 
   ngOnInit() {
+    if (!this.subjects.getStoredSubjects()) {
     this.getSubjects();
+    } else {
+      this.rows = this.subjects.getStoredSubjects();
+    }
   }
 
   action(event) {
