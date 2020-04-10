@@ -35,9 +35,10 @@ export class DialogService {
     return dialogRef.afterClosed();
   }
 
-  caseStudyDialog(component, data) {
+  openDialog(component, data) {
     const dialogRef = this.dialog.open(component, {
       maxHeight: '80vh',
+      minWidth: '30vh',
       disableClose: true,
       data: {
         params: data

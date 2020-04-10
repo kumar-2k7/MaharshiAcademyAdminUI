@@ -1,0 +1,12 @@
+.exam-dialog-container {
+    min-width: 40vw;
+}
+.difficulty-level-wrapper {
+    text-align: center;
+    
+}
+.difficulty-level-wrapper mat-form-field {
+    min-width: 250px;
+    width: 30%;
+    margin: 0 25px;
+}

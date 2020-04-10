@@ -96,7 +96,7 @@ export class CaseStudiesComponent implements OnInit {
         }
       })
     } else {
-      this.dialogService.caseStudyDialog(CaseStudyDialogComponent, event).subscribe(dialogResponse => {
+      this.dialogService.openDialog(CaseStudyDialogComponent, event).subscribe(dialogResponse => {
         console.log(dialogResponse);
         if (dialogResponse.CaseStudyDescription) {
           const req = {

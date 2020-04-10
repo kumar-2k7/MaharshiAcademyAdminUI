@@ -26,7 +26,10 @@ export const environment = {
     GetAnswerByQuestionID: 'ManageMasterData/GetAnsersByQuestionID',
     GetMainCourseAll: 'ManageMasterData/GetMainCourseAll',
     InsertMainCourse: 'ManageMasterData/InsertMainCourse',
-    GetExamByCourseID: 'ManageMasterData/GetExamByCourseID'
+    GetExamByCourseID: 'ManageMasterData/GetExamByCourseID',
+    CreateExam: 'ManageMasterData/CreateExam',
+    DeleteExam: 'ManageMasterData/DeleteExam',
+    UpdateExam: 'ManageMasterData/UpdateExam'
   }
 };
 

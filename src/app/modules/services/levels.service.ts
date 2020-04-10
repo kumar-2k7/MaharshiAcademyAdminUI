@@ -23,4 +23,8 @@ export class LevelsService {
   getSaveDifficultyLevels(): IDifficultyLevelList[] {
     return this.difficultyLevels;
   }
+
+  getLevelByLevelID(levelID): IDifficultyLevelList {
+    return this.difficultyLevels.find((a) => a.DifficultyLevelID === levelID);
+  }
 }

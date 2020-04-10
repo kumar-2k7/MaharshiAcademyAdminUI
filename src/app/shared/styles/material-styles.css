@@ -5,3 +5,10 @@
 .mat-button-primary:disabled {
 background-color: rgba(0,0,0,.26);
 }
+.mat-button-secondary {
+    background-color: #f44336;
+    color: white;
+}
+.mat-button-secondary:disabled {
+background-color: rgba(0,0,0,.26);
+}

@@ -68,7 +68,8 @@ import { ExamDialogComponent } from './shared/components/exam-dialog/exam-dialog
   entryComponents: [
     DialogComponent,
     QuestionsDialogComponent,
-    CaseStudyDialogComponent
+    CaseStudyDialogComponent,
+    ExamDialogComponent
   ],
   providers: [
     HttpService,

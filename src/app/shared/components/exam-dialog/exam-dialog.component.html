@@ -1,3 +1,21 @@
-<p>
-  exam-dialog works!
-</p>
+<div class="exam-dialog-container">
+  <app-dropdowns [dropdowns]="dropdowns" (selection)="selection($event)"></app-dropdowns>
+  <div class="difficulty-level-wrapper">
+    <mat-form-field>
+      <mat-label>Difficulty Level</mat-label>
+      <mat-select [formControl]="difficultyLevel">
+        <mat-option *ngFor="let level of levels" [value]="level.DifficultyLevelID"> {{level.DifficultyLevelDescription}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>No. of Question(s)</mat-label>
+      <input matInput [formControl]="NumberOfQuestions" type="number">  
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="close('C')">Cancel</button>
+    <button mat-button cdkFocusInitial (click)="close('A')"
+    [disabled]="!selectedSubject || !selectedChapter || difficultyLevel.invalid || NumberOfQuestions.invalid"
+    >{{data.params.action.toUpperCase()}}</button>
+  </div>
+</div>
