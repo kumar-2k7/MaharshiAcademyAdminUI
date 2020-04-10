@@ -10,10 +10,10 @@
 .loader-spinner {
     display: table-cell;
     vertical-align: middle;
-    z-index: 9999;
+    z-index: 99999;
 }
 
 ::ng-deep .mat-spinner {
-    z-index: 999;
+    z-index: 9999;
     margin: 0 auto;
 }

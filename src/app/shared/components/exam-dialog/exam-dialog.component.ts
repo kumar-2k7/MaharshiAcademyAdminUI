@@ -54,7 +54,10 @@ export class ExamDialogComponent implements OnInit, AfterViewInit {
     const addReq = {
       "SubjectID": this.selectedSubject.SubjectID,
       "ChapterID": this.selectedChapter.ChapterID,
+      "SubjectName": this.selectedSubject.SubjectName,
+      "ChapterName": this.selectedChapter.ChapterName,
       "DifficultyLevelID": this.difficultyLevel.value,
+      "LevelName": this.levelsService.getLevelByLevelID(this.difficultyLevel.value).DifficultyLevelDescription,
       "QuestionCount": Number(this.NumberOfQuestions.value),
       "IsGroupQuestion": true
     }
